@@ -1,0 +1,43 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block body %}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        {% if add_shipment %}
+        Add Shipment
+        {% else %}
+        Edit Shipment
+        {% endif %}
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Shipments</a></li>
+        <li class="active">
+            {% if add_shipment %}
+            Add Shipment
+            {% else %}
+            Edit Shipment
+            {% endif %}
+        </li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title col-md-10">Shipment</h3>
+                    <div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    {{ wtf.quick_form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

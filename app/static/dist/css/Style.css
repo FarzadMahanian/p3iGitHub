@@ -1,0 +1,51 @@
+/*----------------------------------------*/
+/*  Farzad's Style
+/*----------------------------------------*/
+
+.login-box {
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 30px;
+	color: #fff;
+}
+
+.login-box .login-logo img {
+	width: 100px;
+	height: auto;
+}
+
+
+.login-box .btn {
+	width: 100%;
+	margin-top: 30px;
+}
+
+.team-img {
+	overflow: hidden;
+	background-color: #eee;
+}
+
+.team-img img {
+    width: 70%;
+    border-radius: 50%;
+    border: 1px solid #000;
+    text-align: center;
+}
+
+.team-img .card {
+	text-align: center;
+	margin-top: 30px;
+}
+
+.team-img .card .card-title {
+	margin-top: 10px;
+	text-transform: uppercase;
+}
+
+.single-team-member:hover .team-img {
+	opacity: 0.5;
+}
+
+.team-social-icon ul li a {
+	color: #000;
+	border-color: #000;
+}

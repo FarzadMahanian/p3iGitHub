@@ -1,0 +1,96 @@
+<!-- app/templates/home/index.html -->
+
+{% extends "base.html" %}
+{% block body %}
+<b>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Inventory
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Inventory</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+</b>
+<section class="content">
+    <b></b>
+    <div class="row">
+        <b></b>
+        <div class="col-xs-12">
+            <b></b>
+            <div class="box">
+                <b>
+                    <div class="box-header">
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Quantity</th>
+                                <th>Expiry</th>
+                                <th>Action(s)</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in inventory%}
+                            <tr>
+                                <td> {{ p.name }}</td>
+                                <td> {{ p.location }}</td>
+                                <td> {{ p.Quantity }}</td>
+                                <td> {{ p.Expiry }}</td>
+                                <td class="dontprint">
+                                    <button type="button" class="btn btn-primary" onclick="pShipment(this)"><i
+                                            class="fa fa-print"></i></button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </b>
+                <b>
+                    <!-- /.box-body -->
+                </b>
+            </div>
+            <b>
+                <!-- /.box -->
+            </b>
+        </div>
+        <b>
+            <!-- /.col -->
+        </b>
+    </div>
+    <b>
+        <!-- /.row -->
+    </b>
+</section>
+<!-- print div -->
+<div id="print" class="content print" style="display:none;">
+    <div style="font-size:28px">
+        <img src="{{ url_for('static', filename='dist/img/Logo.png') }}" height="70px"><b>P3I</b>
+    </div>
+    <h4>Contact Person: {{current_user.name}}</h4>
+    <h3>Product</h3>
+    <table border="1">
+        <thead>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Quantity</th>
+        <th>Expiry</th>
+        </thead>
+        <tbody class="printdata">
+
+        </tbody>
+    </table>
+</div>
+<!-- print div -->
+<b>
+    <!-- /.content -->
+</b>
+{% endblock %}

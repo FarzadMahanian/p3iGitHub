@@ -1,0 +1,121 @@
+<!-- app/templates/home/index.html -->
+
+{% extends "base.html" %}
+{% block body %}
+<b>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Products
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Products</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+</b>
+<section class="content">
+    <b></b>
+    <div class="row">
+        <b></b>
+        <div class="col-xs-12">
+            <b></b>
+            <div class="box">
+                <b>
+                    <div class="box-header">
+                        <div>
+                            <a style="float:right" href="{{ url_for('home.add_product') }}">
+                                <button class="btn btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                    Add Product
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Quantity</th>
+                                <th>Received On</th>
+                                <th>Expiry</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for p in products%}
+                            <tr>
+                                <td> {{ p.id }}</td>
+                                <td> {{ p.name }}</td>
+                                <td> {{ p.location }}</td>
+                                <td> {{ p.stock }}</td>
+                                <td> {{ p.rcv_date }}</td>
+                                <td> {{ p.exp_date }}</td>
+                                <td class="dontprint">
+                                    <a type="button" class="btn btn-info"
+                                       href="{{ url_for('home.edit_product', id=p.id) }}">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <button type="button" class="btn btn-primary" onclick="pShipment(this)"><i
+                                            class="fa fa-print"></i></button>
+                                    {% if current_user.is_admin %}
+                                <a type="button" class="btn btn-danger"
+                                       href="{{ url_for('home.delete_product', id=p.id) }}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                {% endif %}
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </b>
+                <b>
+                    <!-- /.box-body -->
+                </b>
+            </div>
+            <b>
+                <!-- /.box -->
+            </b>
+        </div>
+        <b>
+            <!-- /.col -->
+        </b>
+    </div>
+    <b>
+        <!-- /.row -->
+    </b>
+</section>
+<!-- print div -->
+<div id="print" class="content print" style="display:none;">
+    <div style="font-size:28px">
+        <img src="{{ url_for('static', filename='dist/img/Logo.png') }}" height="70px"><b>P3I</b>
+    </div>
+    <h4>Contact Person: {{current_user.name}}</h4>
+    <h3>Product</h3>
+    <table border="1">
+        <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Quantity</th>
+        <th>Received On</th>
+        <th>Expiry</th>
+        </thead>
+        <tbody class="printdata">
+
+        </tbody>
+    </table>
+</div>
+<!-- print div -->
+<b>
+    <!-- /.content -->
+</b>
+{% endblock %}
